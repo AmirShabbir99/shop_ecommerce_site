@@ -42,13 +42,11 @@ const login = asyncHandler(async (req, res) => {
 });
 
 // @desc  Get current user profile
-// @route GET /api/auth/me
+// @routes GET /api/auth/me
 const getMe = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).populate('wishlist', 'title price images');
   res.json(user);
 });
-
-// @desc  Update profile
 // @route PUT /api/auth/me
 const updateProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
