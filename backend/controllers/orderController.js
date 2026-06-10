@@ -2,7 +2,6 @@ const asyncHandler = require('express-async-handler');
 const Order   = require('../models/Order');
 const Product = require('../models/Product');
 
-// @desc  Create order
 // @route POST /api/orders
 const createOrder = asyncHandler(async (req, res) => {
   const { orderItems, shippingAddress, paymentMethod, coupon } = req.body;
@@ -43,7 +42,6 @@ const createOrder = asyncHandler(async (req, res) => {
   res.status(201).json(order);
 });
 
-// @desc  Get my orders
 // @route GET /api/orders/my
 const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id }).sort('-createdAt').populate('orderItems.product', 'title images');
