@@ -5,7 +5,7 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 console.log("api :",api)
-// Attach token on every request
+// Attach token on every requests
 api.interceptors.request.use((config) => {
   const user = localStorage.getItem('luxora_user');
   console.log("USER :",user)
