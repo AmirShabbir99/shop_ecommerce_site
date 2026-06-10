@@ -41,7 +41,6 @@ const login = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc  Get current user profile
 // @routes GET /api/auth/me
 const getMe = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).populate('wishlist', 'title price images');
@@ -59,7 +58,6 @@ const updateProfile = asyncHandler(async (req, res) => {
   res.json({ _id: updated._id, name: updated.name, email: updated.email, role: updated.role, token: generateToken(updated._id) });
 });
 
-// @desc  Add address
 // @route POST /api/auth/address
 const addAddress = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
